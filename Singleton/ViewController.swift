@@ -11,9 +11,24 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        startGame()
+    }
+    
+    private func startGame() {
+        let game = Game()
+        game.setOperation()
+
+        Singleton.shared.requestForAccess()
+        game.setOperation()
+
+        Singleton.shared.revokeAccess()
+        game.setOperation()
+
+        Singleton.shared.accessGranted = nil
+        game.setOperation()
+
+        print("all operations done")
     }
 
-
 }
-
